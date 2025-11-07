@@ -39,6 +39,8 @@ public class OrderController {
     @PostMapping("/orders")
     public ResponseEntity<Void> createOrder(@RequestBody @Valid CreateOrderDto createOrderDto){
         orderService.createOrder(createOrderDto);
+        
+        String foo = "hello";
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(createOrderDto.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
